@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://www.ericsson.com/em/emm/sp/backend" xmlns:ns1="http://www.ericsson.com/em/emm/common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://www.ericsson.com/em/emm/common" schemaLocation="common.xsd"/>
+
+  <xs:element name="preapprovalrequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="fromfri" type="xs:string"/>
+        <xs:element name="tofri" type="xs:string"/>
+        <xs:element name="message" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="preapprovalresponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="preapprovalid" type="xs:long"/>
+        <xs:element name="status" type="ns1:preapprovalstatus"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://www.ericsson.com/em/emm" xmlns:ns1="http://www.ericsson.com/em/emm/common" xmlns:tns="http://www.ericsson.com/em/emm" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://www.ericsson.com/em/emm/common" schemaLocation="common.xsd"/>
+
+  <xs:element name="getbatchtransferrequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="batchid" type="xs:long"/>
+        <xs:element name="resulttype" type="ns1:batchtransferresulttype" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getbatchtransferresponse" type="tns:getbatchtransferresponsetype"/>
+
+  <xs:complexType name="getbatchtransferresponsetype">
+    <xs:sequence>
+      <xs:element name="batchinfo" type="ns1:batchinfotype"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

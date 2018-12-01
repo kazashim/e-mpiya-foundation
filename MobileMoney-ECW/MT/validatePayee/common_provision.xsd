@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" version="1.0"
+  targetNamespace="http://www.ericsson.com/em/emm/provisioning/v1_0/common"
+  xmlns:ns2="urn:iso:std:iso:20022:tech:xsd" xmlns:ns1="http://www.ericsson.com/em/emm/v1_0/common"
+  xmlns:prc="http://www.ericsson.com/em/emm/provisioning/v1_0/common"
+  xmlns:tns="http://www.ericsson.com/em/emm/provisioning/v1_0/common"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://www.ericsson.com/em/emm/v1_0/common"
+    schemaLocation="common_v10.xsd"/>
+
+  <xs:import namespace="urn:iso:std:iso:20022:tech:xsd"
+    schemaLocation="iso20022.xsd"/>
+
+  <xs:complexType name="accountdetailstype">
+    <xs:sequence>
+      <xs:element name="accountstatus" type="tns:accountstatus" minOccurs="0"/>
+      <xs:element name="accounttype" type="ns1:accounttype" minOccurs="0"/>
+      <xs:element name="profilename" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="accountholderdetailstype">
+    <xs:sequence>
+      <xs:element name="profilename" type="xs:string" minOccurs="0"/>
+      <xs:element name="securityquestion" type="xs:string" minOccurs="0"/>
+      <xs:element name="securityanswer" type="xs:string" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+      <xs:element name="username" type="xs:string" minOccurs="0"/>
+      <xs:element name="internalidentity" type="xs:string" minOccurs="0"/>
+      <xs:element name="externalid" type="xs:string" minOccurs="0"/>
+      <xs:element name="defaultfri" type="xs:string" minOccurs="0"/>
+      <xs:element name="parentaccountholderid" type="xs:string" minOccurs="0"/>
+      <xs:element name="clearingnumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="bankaccount" type="xs:string" minOccurs="0"/>
+      <xs:element name="acceptedtcversion" type="xs:string" minOccurs="0"/>
+      <xs:element name="accountholderattributes" type="ns1:accountholderattributestype"
+        minOccurs="0"/>
+      <xs:element name="accountholderstatus" type="ns1:accountholderstatus" minOccurs="0"/>
+      <xs:element name="blackliststatus" type="tns:blackliststatus" minOccurs="0"/>
+      <xs:element name="aliases" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="alias" type="tns:aliasvalue" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="credentials" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="credential" type="tns:credentialtypedetails" minOccurs="0"
+              maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="recruiteridentity" type="xs:string" minOccurs="0"/>
+      <xs:element name="accountholdertype" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="aliasvalue">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="credentialtypedetails">
+    <xs:sequence>
+      <xs:element name="credentialtype" type="xs:string" minOccurs="0"/>
+      <xs:element name="credentialstatus" type="tns:credentialstatustype" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="accountholderhierarchydetailstype">
+    <xs:sequence>
+      <xs:element name="parentaccountholderid" type="xs:string" minOccurs="0"/>
+      <xs:element name="children" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="child" type="tns:identityvalue" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="identityvalue">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="accountholderidentityhistoryentry">
+    <xs:sequence>
+      <xs:element name="changetimestamp" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="accountholderbasicinfo" type="ns1:accountholderbasicinfotype" minOccurs="0"/>
+      <xs:element name="action" type="tns:identityhistoryaction" minOccurs="0"/>
+      <xs:element name="identitytype" type="ns1:identitytype" minOccurs="0"/>
+      <xs:element name="oldidentity" type="xs:string" minOccurs="0"/>
+      <xs:element name="newidentity" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="accountholderregistrationdetails">
+    <xs:sequence>
+      <xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+      <xs:element name="msisdnverificationcode" type="xs:string" minOccurs="0"/>
+      <xs:element name="username" type="xs:string" minOccurs="0"/>
+      <xs:element name="alias" type="xs:string" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="emailverificationcode" type="xs:string" minOccurs="0"/>
+      <xs:element name="parentaccountholderid" type="xs:string" minOccurs="0"/>
+      <xs:element name="bankaccount" type="xs:string" minOccurs="0"/>
+      <xs:element name="clearingnumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="profilename" type="xs:string" minOccurs="0"/>
+      <xs:element name="currency" type="xs:string" minOccurs="0"/>
+      <xs:element name="securityquestion" type="xs:string" minOccurs="0"/>
+      <xs:element name="securityquestionanswer" type="xs:string" minOccurs="0"/>
+      <xs:element name="timeout" type="xs:int" default="30"/>
+      <xs:element name="externalid" type="xs:string" minOccurs="0"/>
+      <xs:element name="bankdomainname" type="xs:string" minOccurs="0"/>
+      <xs:element name="homechargingregionname" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="birthinformation">
+    <xs:sequence>
+      <xs:element name="date" type="xs:date" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="blacklistedorblockedaccountholderdetailstype">
+    <xs:sequence>
+      <xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+      <xs:element name="firstname" type="xs:string" minOccurs="0"/>
+      <xs:element name="surname" type="xs:string" minOccurs="0"/>
+      <xs:element name="blackListDate" type="xs:dateTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="changelogentry">
+    <xs:sequence>
+      <xs:element name="transactionid" type="xs:long" minOccurs="0"/>
+      <xs:element name="subtransactionid" type="xs:long" minOccurs="0"/>
+      <xs:element name="initatinguser" type="xs:string" minOccurs="0"/>
+      <xs:element name="realuser" type="xs:string" minOccurs="0"/>
+      <xs:element name="user" type="xs:string" minOccurs="0"/>
+      <xs:element name="changedfield" type="xs:string" minOccurs="0"/>
+      <xs:element name="valuebefore" type="xs:string" minOccurs="0"/>
+      <xs:element name="valueafter" type="xs:string" minOccurs="0"/>
+      <xs:element name="reason" type="xs:string" minOccurs="0"/>
+      <xs:element name="eventdate" type="xs:dateTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="connectedaccountholderdetailstype">
+    <xs:sequence>
+      <xs:element name="identity" type="xs:string" minOccurs="0"/>
+      <xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+      <xs:element name="referenceprofilename" type="xs:string" minOccurs="0"/>
+      <xs:element name="owner" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="financialinformation">
+    <xs:sequence>
+      <xs:element name="bankaccount" type="ns1:accountidentifier"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="occupation">
+    <xs:sequence>
+      <xs:element name="profession" type="xs:string" minOccurs="0"/>
+      <xs:element name="employingcompany" type="xs:string" minOccurs="0"/>
+      <xs:element name="businessfunction" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="permissiontype">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="subpermissions" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="subpermission" type="ns1:multiwordstringvalue" minOccurs="0"
+              maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="permissionvalue">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="personalinformation">
+    <xs:sequence>
+      <xs:element name="birth" type="tns:birthinformation" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="personalname">
+    <xs:sequence>
+      <xs:element name="prefix" type="ns2:NamePrefix1Code" minOccurs="0"/>
+      <xs:element name="firstname" type="xs:string"/>
+      <xs:element name="middlename" type="xs:string" minOccurs="0"/>
+      <xs:element name="surname" type="xs:string"/>
+      <xs:element name="suffix" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="taxinformation">
+    <xs:sequence>
+      <xs:element name="taxnumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="taxationcountry" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="whitelistedaccountholderdetailstype">
+    <xs:sequence>
+      <xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+      <xs:element name="firstname" type="xs:string" minOccurs="0"/>
+      <xs:element name="surname" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="accountstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="BLOCKED"/>
+      <xs:enumeration value="CLOSED"/>
+      <xs:enumeration value="UNAVAILABLE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="blackliststatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BLACKLISTED"/>
+      <xs:enumeration value="WHITELISTED"/>
+      <xs:enumeration value="NONE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="credentialstatustype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="INACTIVE"/>
+      <xs:enumeration value="BLOCKED"/>
+      <xs:enumeration value="ACTIVE_MUST_BE_CHANGED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="identityhistoryaction">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SET"/>
+      <xs:enumeration value="CHANGE"/>
+      <xs:enumeration value="DELETE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="profiletype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACCOUNT_HOLDER_PROFILE"/>
+      <xs:enumeration value="ACCOUNT_HOLDER_ACCOUNT_REFERENCE_PROFILE"/>
+      <xs:enumeration value="ACCOUNT_PROFILE"/>
+      <xs:enumeration value="GROUP_PROFILE"/>
+      <xs:enumeration value="GROUP_MEMBER_PROFILE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="extensiontype">
+    <xs:sequence>
+      <xs:any processContents="skip" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>  
+</xs:schema>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://www.ericsson.com/em/emm/provisioning/v1_1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.ericsson.com/em/emm/v1_1/common" xmlns:ns1="http://www.ericsson.com/em/emm/v1_0/common">
+
+  <xs:import namespace="http://www.ericsson.com/em/emm/v1_0/common" schemaLocation="../../v1.0/common/common.xsd"/>
+
+  <xs:import namespace="http://www.ericsson.com/em/emm/v1_1/common" schemaLocation="../../v1.1/common/common.xsd"/>
+
+  <xs:element name="getaccountholderinforequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="identity" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getaccountholderinforesponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="accountholderbasicinfo" type="ns2:accountholderbasicinfotype" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

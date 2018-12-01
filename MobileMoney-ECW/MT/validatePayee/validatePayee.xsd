@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://www.ericsson.com/em/emm/provisioning/v1_0"
+  xmlns:ns2="http://www.ericsson.com/em/emm/v1_0/common"
+  xmlns:ns1="http://www.ericsson.com/em/emm/provisioning/v1_0/common"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://www.ericsson.com/em/emm/provisioning/v1_0/common" schemaLocation="common_provision.xsd"/>  
+  <xs:import namespace="http://www.ericsson.com/em/emm/v1_0/common" schemaLocation="common_v10.xsd"/>
+
+  <xs:element name="validatepayeerequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="identity" type="xs:string"/>
+        <xs:element name="extension" type="ns2:extensiontype" minOccurs="0"/>
+      </xs:sequence>      
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="validatepayeeresponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="transactionStatus" type="xs:boolean"/>
+        <xs:element name="accountslist" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="account" type="ns1:accountdetailstype" minOccurs="0"
+                maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="blackliststatus" type="ns1:blackliststatus" minOccurs="0"/>
+        <xs:element name="information" type="ns1:personalinformation" minOccurs="0"/>
+        <xs:element name="extension" type="ns2:extensiontype" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

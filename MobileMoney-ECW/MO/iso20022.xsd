@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="urn:iso:std:iso:20022:tech:xsd" xmlns:iso="urn:iso:std:iso:20022:tech:xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<!-- Complex types -->
+
+	<xsd:complexType name="IndividualPerson10">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element maxOccurs="1" minOccurs="0" name="NmPrfx" type="iso:NamePrefix1Code" />
+				<xsd:element maxOccurs="1" minOccurs="0" name="XtndedNmPrfx" type="iso:Extended350Code" />
+			</xsd:choice>
+			<xsd:element name="GvnNm" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="MddlNm" type="iso:Max35Text" />
+			<xsd:element name="Nm" type="iso:Max350Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="NmSfx" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="Gndr" type="iso:GenderCode" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="Lang" type="iso:LanguageCode" />
+			<xsd:element name="BirthDt" type="iso:ISODate" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="CtryOfBirth" type="iso:CountryCode" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="PrvcOfBirth" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="CityOfBirth" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="Prfssn" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="TaxtnCtry" type="iso:CountryCode" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="CtryAndResdtlSts" type="iso:CountryAndResidentialStatusType1" />
+			<xsd:element maxOccurs="5" minOccurs="1" name="PstlAdr" type="iso:PostalAddress3" />
+			<xsd:element maxOccurs="3" minOccurs="1" name="Ctznsh" type="iso:CitizenshipInformation" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="EmplngCpny" type="iso:Max140Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="BizFctn" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="PmryComAdr" type="iso:CommunicationAddress3" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="ScndryComAdr" type="iso:CommunicationAddress3" />
+			<xsd:element maxOccurs="10" minOccurs="0" name="OthrId" type="iso:GenericIdentification9" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="IndividualPerson8">
+		<xsd:sequence>
+			<xsd:element name="Nm" type="iso:Max35Text" />
+			<xsd:element name="GvnNm" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="NmPrfx" type="iso:NamePrefix1Code" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="NmSfx" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="Gndr" type="iso:GenderCode" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="BirthDt" type="iso:ISODate" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="SclSctyNb" type="iso:Max35Text" />
+			<xsd:element name="IndvInvstrAdr" type="iso:PostalAddress1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CountryAndResidentialStatusType1">
+		<xsd:sequence>
+			<xsd:element name="Ctry" type="iso:CountryCode" />
+			<xsd:element name="ResdtlSts" type="iso:ResidentialStatus1Code" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="PostalAddress3">
+		<xsd:sequence>
+			<xsd:element name="AdrTp" type="iso:AddressType1Code" />
+			<xsd:element name="MlngInd" type="iso:YesNoIndicator" />
+			<xsd:element name="RegnAdrInd" type="iso:YesNoIndicator" />
+			<xsd:element name="NmAndAdr" type="iso:NameAndAddress4" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="NameAndAddress4">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Nm" type="iso:Max350Text" />
+			<xsd:element name="Adr" type="iso:PostalAddress1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="PostalAddress1">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="AdrTp" type="iso:AddressType2Code" />
+			<xsd:element maxOccurs="5" minOccurs="0" name="AdrLine" type="iso:Max70Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="StrtNm" type="iso:Max70Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="BldgNb" type="iso:Max16Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="PstCd" type="iso:Max16Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="TwnNm" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="CtrySubDvsn" type="iso:Max35Text" />
+			<xsd:element name="Ctry" type="iso:CountryCode" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CitizenshipInformation">
+		<xsd:sequence>
+			<xsd:element name="Ntlty" type="iso:NationalityCode" />
+			<xsd:element name="MnrInd" type="iso:YesNoIndicator" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CommunicationAddress3">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Email" type="iso:Max256Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="Phne" type="iso:PhoneNumber" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="Mob" type="iso:PhoneNumber" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="FaxNb" type="iso:PhoneNumber" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="TlxAdr" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="URLAdr" type="iso:Max256Text" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="GenericIdentification9">
+		<xsd:sequence>
+			<xsd:element name="Id" type="iso:Max35Text" />
+			<xsd:choice>
+				<xsd:element name="IdTp" type="iso:PersonIdentificationType1Code" />
+				<xsd:element name="XtndedIdTp" type="iso:Extended350Code" />
+			</xsd:choice>
+			<xsd:element maxOccurs="1" minOccurs="0" name="Issr" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="IsseDt" type="iso:ISODate" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="XpryDt" type="iso:ISODate" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ActiveOrHistoricCurrencyAndAmount">
+		<xsd:simpleContent>
+			<xsd:extension base="iso:ActiveOrHistoricCurrencyAndAmount_SimpleType">
+				<xsd:attribute name="Ccy" type="iso:ActiveOrHistoricCurrencyCode" use="required" />
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="PaymentCard2">
+		<xsd:sequence>
+			<xsd:element name="Tp" type="iso:CardType1Code" />
+			<xsd:element name="Nb" type="iso:Max35Text" />
+			<xsd:element name="HldrNm" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="StartDt" type="iso:ISOYearMonth" />
+			<xsd:element name="XpryDt" type="iso:ISOYearMonth" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="CardIssrNm" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="CardIssrId" type="iso:PartyIdentification2Choice" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="SctyCd" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="SeqNb" type="iso:Max3Text" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="PartyIdentification2Choice">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element name="BICOrBEI" type="iso:AnyBICIdentifier" />
+				<xsd:element name="PrtryId" type="iso:GenericIdentification1" />
+				<xsd:element name="NmAndAdr" type="iso:NameAndAddress5" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="GenericIdentification1">
+		<xsd:sequence>
+			<xsd:element name="Id" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="SchmeNm" type="iso:Max35Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="Issr" type="iso:Max35Text" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="NameAndAddress5">
+		<xsd:sequence>
+			<xsd:element name="Nm" type="iso:Max350Text" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="Adr" type="iso:PostalAddress1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- Simple types -->
+
+	<xsd:simpleType name="ActiveOrHistoricCurrencyAndAmount_SimpleType">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minInclusive value="0" />
+			<xsd:fractionDigits value="5" />
+			<xsd:totalDigits value="18" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="ActiveOrHistoricCurrencyCode">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[A-Z]{3,3}" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="NamePrefix1Code">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="DOCT" />
+			<xsd:enumeration value="MIST" />
+			<xsd:enumeration value="MISS" />
+			<xsd:enumeration value="MADM" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="AnyBICIdentifier">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Extended350Code">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1" />
+			<xsd:maxLength value="350" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Max3Text">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1" />
+			<xsd:maxLength value="3" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Max16Text">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1" />
+			<xsd:maxLength value="16" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Max35Text">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1" />
+			<xsd:maxLength value="35" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Max70Text">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1" />
+			<xsd:maxLength value="70" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Max140Text">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1" />
+			<xsd:maxLength value="140" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Max256Text">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1" />
+			<xsd:maxLength value="256" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Max350Text">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1" />
+			<xsd:maxLength value="350" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Max2048Text">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1" />
+			<xsd:maxLength value="2048" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="GenderCode">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="MALE" />
+			<xsd:enumeration value="FEMA" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="LanguageCode">
+		<xsd:restriction base="xsd:string" />
+	</xsd:simpleType>
+
+	<xsd:simpleType name="CountryCode">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[A-Z]{2,2}" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="ResidentialStatus1Code">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="RESI" />
+			<xsd:enumeration value="PRES" />
+			<xsd:enumeration value="NRES" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="AddressType1Code">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="HOME" />
+			<xsd:enumeration value="BIZZ" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="AddressType2Code">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="ADDR" />
+			<xsd:enumeration value="PBOX" />
+			<xsd:enumeration value="HOME" />
+			<xsd:enumeration value="BIZZ" />
+			<xsd:enumeration value="MLTO" />
+			<xsd:enumeration value="DLVY" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="YesNoIndicator">
+		<xsd:restriction base="xsd:boolean" />
+	</xsd:simpleType>
+
+	<xsd:simpleType name="NationalityCode">
+		<xsd:restriction base="xsd:string" />
+	</xsd:simpleType>
+
+	<xsd:simpleType name="PhoneNumber">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\+[0-9]{1,3}-[0-9()+\-]{1,30}" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="ISODate">
+		<xsd:restriction base="xsd:date" />
+	</xsd:simpleType>
+
+	<xsd:simpleType name="ISODateTime">
+		<xsd:restriction base="xsd:dateTime" />
+	</xsd:simpleType>
+
+	<xsd:simpleType name="ISOYearMonth">
+		<xsd:restriction base="xsd:gYearMonth" />
+	</xsd:simpleType>
+
+	<xsd:simpleType name="PersonIdentificationType1Code">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="PASS" />
+			<xsd:enumeration value="CPFA" />
+			<xsd:enumeration value="SRSA" />
+			<xsd:enumeration value="NRIN" />
+			<xsd:enumeration value="OTHR" />
+			<xsd:enumeration value="DRLC" />
+			<xsd:enumeration value="SOCS" />
+			<xsd:enumeration value="AREG" />
+			<xsd:enumeration value="IDCD" />
+			<xsd:enumeration value="EMID" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="CardType1Code">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="CRDT" />
+			<xsd:enumeration value="DBIT" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="ExternalServiceLevel1Code">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1" />
+			<xsd:maxLength value="4" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="ServiceLevel8Choice">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element name="Cd" type="iso:ExternalServiceLevel1Code" />
+				<xsd:element name="Prtry" type="iso:Max35Text" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ForeignExchangeTerms6">
+		<xsd:sequence>
+			<xsd:element name="UnitCcy" type="iso:ActiveOrHistoricCurrencyCode" />
+			<xsd:element name="QtdCcy" type="iso:ActiveOrHistoricCurrencyCode" />
+			<xsd:element name="XchgRate" type="iso:BaseOneRate" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="QtnDt" type="iso:ISODateTime" />
+			<xsd:element maxOccurs="1" minOccurs="0" name="QtgInstn" type="iso:PartyIdentification2Choice" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="BaseOneRate">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:fractionDigits value="10" />
+			<xsd:totalDigits value="11" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="PlusOrMinusIndicator">
+		<xsd:restriction base="xsd:boolean" />
+	</xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://www.ericsson.com/em/emm" xmlns:ns1="http://www.ericsson.com/em/emm/common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://www.ericsson.com/em/emm/common" schemaLocation="common.xsd"/>
+
+  <xs:element name="getreversetransactiondetailsrequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="financialtransactionid" type="xs:long"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getreversetransactiondetailsresponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="subtransactions" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="subtransaction" type="ns1:financialinstructiondetails" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

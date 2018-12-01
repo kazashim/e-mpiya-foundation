@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://www.ericsson.com/em/emm/sp/backend" xmlns:ns1="http://www.ericsson.com/em/emm/common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://www.ericsson.com/em/emm/common" schemaLocation="common.xsd"/>
+
+  <xs:element name="withdrawrequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="resource" type="xs:string"/>
+        <xs:element name="accountholderid" type="xs:string"/>
+        <xs:element name="amount" type="ns1:moneydetailstype"/>
+        <xs:element name="transactionid" type="xs:long"/>
+        <xs:element name="message" type="xs:string" minOccurs="0"/>
+        <xs:element name="extension" type="ns1:extensiontype" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="withdrawresponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="transactionid" type="xs:long"/>
+        <xs:element name="providertransactionid" type="xs:string"/>
+        <xs:element name="status" type="ns1:status"/>
+        <xs:element name="newbalance" type="ns1:moneydetailstype" minOccurs="0"/>
+        <xs:element name="message" type="xs:string" minOccurs="0"/>
+        <xs:element name="extension" type="ns1:extensiontype" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

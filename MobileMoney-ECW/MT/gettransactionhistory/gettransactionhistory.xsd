@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://www.ericsson.com/em/emm/financial/v1_0" xmlns:ns2="http://www.ericsson.com/em/emm/financial/v1_0/common" xmlns:ns1="http://www.ericsson.com/em/emm/v1_0/common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://www.ericsson.com/em/emm/v1_0/common" schemaLocation="common.xsd" />
+
+  <xs:import namespace="http://www.ericsson.com/em/emm/financial/v1_0/common" schemaLocation="financial_common.xsd" />
+
+  <xs:element name="gettransactionhistoryrequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="fri" type="xs:string" minOccurs="0"/>
+        <xs:element name="numoftransactions" type="xs:int" default="50"/>
+        <xs:element name="indexoffset" type="xs:int"/>
+        <xs:element name="financialtransactionid" type="xs:long" minOccurs="0"/>
+        <xs:element name="externaltransactionid" type="xs:string" minOccurs="0"/>
+        <xs:element name="transactionstatus" type="ns1:financialtransactionstatus" minOccurs="0"/>
+        <xs:element name="transactiontype" type="ns1:financialinstructiontype" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="startdatefrom" type="xs:dateTime" minOccurs="0"/>
+        <xs:element name="startdateto" type="xs:dateTime" minOccurs="0"/>
+        <xs:element name="datefrom" type="xs:dateTime" minOccurs="0"/>
+        <xs:element name="dateto" type="xs:dateTime" minOccurs="0"/>
+        <xs:element name="direction" type="ns2:direction" minOccurs="0"/>
+        <xs:element name="otherfri" type="xs:string" minOccurs="0"/>
+        <xs:element name="quoteid" type="ns1:quoteid" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="gettransactionhistoryresponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="totalcount" type="xs:int" minOccurs="0"/>
+        <xs:element name="historylist" nillable="true" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="entry" type="ns1:gettransactionhistoryentrytype" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="loyalty" type="ns1:loyalty" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+
