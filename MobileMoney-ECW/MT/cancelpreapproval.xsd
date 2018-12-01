@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://www.ericsson.com/em/emm/serviceprovider/v1_0/frontend" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="cancelpreapprovalrequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="identity" type="xs:string" minOccurs="0"/>
+        <xs:element name="fri" type="xs:string" minOccurs="0"/>
+        <xs:element name="preapprovalid" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="cancelpreapprovalresponse">
+    <xs:complexType>
+      <xs:sequence/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

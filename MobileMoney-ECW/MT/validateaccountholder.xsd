@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://www.ericsson.com/em/emm/sp/backend" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="validateaccountholderrequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="accountholderid" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="validateaccountholderresponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="valid" type="xs:boolean"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

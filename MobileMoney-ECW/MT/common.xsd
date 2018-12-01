@@ -1,0 +1,1265 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" version="1.0" targetNamespace="http://www.ericsson.com/em/emm/common" xmlns:ns1="urn:iso:std:iso:20022:tech:xsd" xmlns:op="http://www.ericsson.com/em/emm/common" xmlns:tns="http://www.ericsson.com/em/emm/common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="urn:iso:std:iso:20022:tech:xsd" schemaLocation="iso20022.xsd"/>
+
+  <xs:complexType name="externalbalancereconciliationtype">
+    <xs:sequence>
+      <xs:element name="fri" type="xs:string" minOccurs="0"/>
+      <xs:element name="accounttype" type="tns:accounttype" minOccurs="0"/>
+      <xs:element name="balancebefore" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="balanceafter" type="tns:moneydetailstype" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="moneydetailstype">
+    <xs:sequence>
+      <xs:element name="amount" type="xs:decimal"/>
+      <xs:element name="currency" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="payoutdetailstype">
+    <xs:sequence>
+      <xs:element name="payoutamount" type="tns:moneydetailstype"/>
+      <xs:element name="principalamount" type="tns:moneydetailstype"/>
+      <xs:element name="senderfirstname" type="xs:string"/>
+      <xs:element name="senderlastname" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pickupdetailstype">
+    <xs:sequence>
+      <xs:element name="createdTimestamp" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="pickupcode" type="xs:string" minOccurs="0"/>
+      <xs:element name="pickupprovider" type="xs:string" minOccurs="0"/>
+      <xs:element name="transactionid" type="xs:long" minOccurs="0"/>
+      <xs:element name="status" type="tns:moneytransferstatustype" minOccurs="0"/>
+      <xs:element name="operationtype" type="tns:moneytransferoperationtype" minOccurs="0"/>
+      <xs:element name="lastchangedtimestamp" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="sendermsisdn" type="xs:string" minOccurs="0"/>
+      <xs:element name="senderfirstname" type="xs:string" minOccurs="0"/>
+      <xs:element name="senderlastname" type="xs:string" minOccurs="0"/>
+      <xs:element name="senderaddress" type="xs:string" minOccurs="0"/>
+      <xs:element name="senderpostalcode" type="xs:string" minOccurs="0"/>
+      <xs:element name="sendercity" type="xs:string" minOccurs="0"/>
+      <xs:element name="senderstate" type="xs:string" minOccurs="0"/>
+      <xs:element name="sendercountrycode" type="xs:string" minOccurs="0"/>
+      <xs:element name="senderamount" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="registrationstatus" type="tns:registrationstatus" minOccurs="0"/>
+      <xs:element name="receivertransactionfirstname" type="xs:string" minOccurs="0"/>
+      <xs:element name="receivertransactionlastname" type="xs:string" minOccurs="0"/>
+      <xs:element name="receiveridentification" type="xs:string" minOccurs="0"/>
+      <xs:element name="receiveramount" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="matchstatus" type="tns:moneytransfermatchstatus" minOccurs="0"/>
+      <xs:element name="receivingfri" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="receivertype">
+    <xs:sequence>
+      <xs:element name="firstname" type="xs:string" minOccurs="0"/>
+      <xs:element name="lastname" type="xs:string" minOccurs="0"/>
+      <xs:element name="address" type="xs:string" minOccurs="0"/>
+      <xs:element name="postalcode" type="xs:string" minOccurs="0"/>
+      <xs:element name="city" type="xs:string" minOccurs="0"/>
+      <xs:element name="state" type="xs:string" minOccurs="0"/>
+      <xs:element name="country" type="xs:string" minOccurs="0"/>
+      <xs:element name="dateofbirth" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="remittancequote">
+    <xs:sequence>
+      <xs:element name="quoteid" type="xs:long"/>
+      <xs:element name="providername" type="xs:string"/>
+      <xs:element name="senderamount" type="tns:moneydetailstype"/>
+      <xs:element name="receiveramount" type="tns:moneydetailstype"/>
+      <xs:element name="fxrate" type="xs:decimal"/>
+      <xs:element name="totalfee" type="tns:moneydetailstype"/>
+      <xs:element name="promotiondiscount" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="payoutmethod" type="tns:payoutmethodtype" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="validationdetailstype">
+    <xs:sequence>
+      <xs:element name="senderlastname" type="xs:string" minOccurs="0"/>
+      <xs:element name="sendcountrycode" type="xs:string" minOccurs="0"/>
+      <xs:element name="sendtime" type="xs:string" minOccurs="0"/>
+      <xs:element name="sendamount" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="sendcurrency" type="xs:string" minOccurs="0"/>
+      <xs:element name="receiveamount" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="receivecurrency" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="accountdetailstype">
+    <xs:sequence>
+      <xs:element name="fri" type="xs:string" minOccurs="0"/>
+      <xs:element name="accountstatus" type="tns:accountstatus" minOccurs="0"/>
+      <xs:element name="accounttype" type="tns:accounttype" minOccurs="0"/>
+      <xs:element name="profilename" type="xs:string" minOccurs="0"/>
+      <xs:element name="referenceprofilename" type="xs:string" minOccurs="0"/>
+      <xs:element name="balance" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="committedbalance" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="totalreservation" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="totalpositivereservation" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="bankdomainname" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="accountholderattributestype">
+    <xs:sequence>
+      <xs:element name="languagecode" type="xs:string" minOccurs="0"/>
+      <xs:element name="commissioningfri" type="xs:string" minOccurs="0"/>
+      <xs:element name="taxnumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="individualPerson10" type="ns1:IndividualPerson10" minOccurs="0"/>
+      <xs:element name="bankdomainname" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="accountholdercontactdetails">
+    <xs:sequence>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="phonenumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="faxnumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="mobilenumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="telexaddress" type="xs:string" minOccurs="0"/>
+      <xs:element name="url" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="accountholderdetailstype">
+    <xs:sequence>
+      <xs:element name="profilename" type="xs:string" minOccurs="0"/>
+      <xs:element name="securityquestion" type="xs:string" minOccurs="0"/>
+      <xs:element name="securityanswer" type="xs:string" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+      <xs:element name="username" type="xs:string" minOccurs="0"/>
+      <xs:element name="internalIdentity" type="xs:string" minOccurs="0"/>
+      <xs:element name="externalId" type="xs:string" minOccurs="0"/>
+      <xs:element name="defaultfri" type="xs:string" minOccurs="0"/>
+      <xs:element name="parentaccountholderid" type="xs:string" minOccurs="0"/>
+      <xs:element name="clearingnumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="bankaccount" type="xs:string" minOccurs="0"/>
+      <xs:element name="acceptedtcversion" type="xs:string" minOccurs="0"/>
+      <xs:element name="accountholderattributes" type="tns:accountholderattributestype" minOccurs="0"/>
+      <xs:element name="accountholderstatus" type="tns:accountholderstatus" minOccurs="0"/>
+      <xs:element name="blackliststatus" type="tns:blackliststatus" minOccurs="0"/>
+      <xs:element name="aliases" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="alias" type="tns:aliasvalue" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="credentials" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="credential" type="tns:credentialtypedetails" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="aliasvalue">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="credentialtypedetails">
+    <xs:sequence>
+      <xs:element name="credentialtype" type="xs:string" minOccurs="0"/>
+      <xs:element name="credentialstatus" type="tns:credentialstatustype" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="accountholderhierarchydetailstype">
+    <xs:sequence>
+      <xs:element name="parentaccountholderid" type="xs:string" minOccurs="0"/>
+      <xs:element name="children" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="child" type="tns:identityvalue" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="identityvalue">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="activationcredentialtype">
+    <xs:sequence>
+      <xs:element name="credentialtype" type="xs:string" minOccurs="0"/>
+      <xs:element name="secret" type="xs:string" minOccurs="0"/>
+      <xs:element name="repeatedsecret" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="adjustmentinstruction">
+    <xs:sequence>
+      <xs:element name="date" type="xs:dateTime"/>
+      <xs:element name="fromfri" type="xs:string" minOccurs="0"/>
+      <xs:element name="tofri" type="xs:string" minOccurs="0"/>
+      <xs:element name="type" type="tns:adjustmenttype"/>
+      <xs:element name="amount" type="xs:decimal"/>
+      <xs:element name="frommessage" type="xs:string" minOccurs="0"/>
+      <xs:element name="tomessage" type="xs:string" minOccurs="0"/>
+      <xs:element name="externaltransactionid" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="approvaldetails">
+    <xs:sequence>
+      <xs:element name="approvalid" type="xs:long" minOccurs="0"/>
+      <xs:element name="created" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="modified" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="initiatedby" type="xs:string" minOccurs="0"/>
+      <xs:element name="reviewedBy" type="xs:string" minOccurs="0"/>
+      <xs:element name="reviewcomment" type="xs:string" minOccurs="0"/>
+      <xs:element name="state" type="tns:approvalstate" minOccurs="0"/>
+      <xs:element name="operation" type="tns:approvaloperation" minOccurs="0"/>
+      <xs:element name="accountholder" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="authenticationquestion">
+    <xs:sequence>
+      <xs:element name="questionid" type="xs:int" minOccurs="0"/>
+      <xs:element name="question" type="xs:string" minOccurs="0"/>
+      <xs:element name="answer" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="accountidentifier">
+    <xs:sequence>
+      <xs:element name="accountnumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="clearingnumber" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bankdomainattributestype">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="bankdomainid" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="batchinfotype">
+    <xs:sequence>
+      <xs:element name="batchid" type="xs:long"/>
+      <xs:element name="title" type="xs:string" minOccurs="0"/>
+      <xs:element name="receivetimestamp" type="xs:string"/>
+      <xs:element name="completedtimestamp" type="xs:string"/>
+      <xs:element name="fromaccountfri" type="xs:string"/>
+      <xs:element name="batchcreatormsisdn" type="xs:string"/>
+      <xs:element name="batchcreatorname" type="xs:string" minOccurs="0"/>
+      <xs:element name="batchapprovermsisdn" type="xs:string" minOccurs="0"/>
+      <xs:element name="batchapprovername" type="xs:string" minOccurs="0"/>
+      <xs:element name="batchapprovable" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="batchcancelledbymsisdn" type="xs:string" minOccurs="0"/>
+      <xs:element name="batchcancelledbyname" type="xs:string" minOccurs="0"/>
+      <xs:element name="numberofrecords" type="xs:long"/>
+      <xs:element name="totalamount" type="xs:decimal"/>
+      <xs:element name="currency" type="xs:string"/>
+      <xs:element name="status" type="xs:string"/>
+      <xs:element name="numberofsuccess" type="xs:long" minOccurs="0"/>
+      <xs:element name="numberoffailure" type="xs:long" minOccurs="0"/>
+      <xs:element name="totalfee" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="totaltransferedamount" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="transactionrecords" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="transactionrecord" type="tns:transactionrecordtype" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transactionrecordtype">
+    <xs:sequence>
+      <xs:element name="transactionidentifier" type="xs:string"/>
+      <xs:element name="receiveridtype" type="xs:string"/>
+      <xs:element name="receiverid" type="xs:string"/>
+      <xs:element name="transactionid" type="xs:string" minOccurs="0"/>
+      <xs:element name="transactiondatetime" type="xs:string" minOccurs="0"/>
+      <xs:element name="amount" type="xs:decimal"/>
+      <xs:element name="result" type="xs:string"/>
+      <xs:element name="reason" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="fee" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="transferedamount" type="xs:decimal" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="blacklistedorblockedaccountholderdetailstype">
+    <xs:sequence>
+      <xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+      <xs:element name="firstname" type="xs:string" minOccurs="0"/>
+      <xs:element name="surname" type="xs:string" minOccurs="0"/>
+      <xs:element name="blackListDate" type="xs:dateTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bonustype">
+    <xs:sequence>
+      <xs:element name="externalbonusid" type="xs:string" minOccurs="0"/>
+      <xs:element name="points" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="bonusprofile" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="changelogentry">
+    <xs:sequence>
+      <xs:element name="transactionid" type="xs:long" minOccurs="0"/>
+      <xs:element name="subtransactionid" type="xs:long" minOccurs="0"/>
+      <xs:element name="initatinguser" type="xs:string" minOccurs="0"/>
+      <xs:element name="user" type="xs:string" minOccurs="0"/>
+      <xs:element name="changedfield" type="xs:string" minOccurs="0"/>
+      <xs:element name="valuebefore" type="xs:string" minOccurs="0"/>
+      <xs:element name="valueafter" type="xs:string" minOccurs="0"/>
+      <xs:element name="reason" type="xs:string" minOccurs="0"/>
+      <xs:element name="eventdate" type="xs:dateTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="connectedaccountholderdetailstype">
+    <xs:sequence>
+      <xs:element name="identity" type="xs:string" minOccurs="0"/>
+      <xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+      <xs:element name="referenceprofilename" type="xs:string" minOccurs="0"/>
+      <xs:element name="owner" type="xs:boolean" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="contactdetailsfulltype">
+    <xs:sequence>
+      <xs:element name="firstname" type="xs:string" minOccurs="0"/>
+      <xs:element name="lastname" type="xs:string" minOccurs="0"/>
+      <xs:element name="address" type="xs:string" minOccurs="0"/>
+      <xs:element name="postalcode" type="xs:string" minOccurs="0"/>
+      <xs:element name="city" type="xs:string" minOccurs="0"/>
+      <xs:element name="stateprovince" type="xs:string" minOccurs="0"/>
+      <xs:element name="country" type="xs:string" minOccurs="0"/>
+      <xs:element name="dateofbirth" type="xs:string" minOccurs="0"/>
+      <xs:element name="nationality" type="xs:string" minOccurs="0"/>
+      <xs:element name="phonenumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="identificationtype" type="xs:string" minOccurs="0"/>
+      <xs:element name="identificationnumber" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="contactdetailstype">
+    <xs:sequence>
+      <xs:element name="fri" type="xs:string" minOccurs="0"/>
+      <xs:element name="contactname" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="custodyaccountdetails">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="accountnumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="clearingnumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="balance" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="controlbalance" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="unresolveddeposits" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="outstandingwithdrawals" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="pendingwithdrawals" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="bankdomainname" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="custodyaccounttransferdetails">
+    <xs:sequence>
+      <xs:element name="status" type="tns:custodytransferstatus" minOccurs="0"/>
+      <xs:element name="transferamount" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="fromcustodyaccount" type="tns:custodyaccountdetails" minOccurs="0"/>
+      <xs:element name="tocustodyaccount" type="tns:custodyaccountdetails" minOccurs="0"/>
+      <xs:element name="createddate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="updatedate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="referenceid" type="xs:string" minOccurs="0"/>
+      <xs:element name="failurereason" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="emailaddress">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="extensiontype">
+    <xs:sequence>
+      <xs:any processContents="lax" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="frivalue">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="frialiastype">
+    <xs:sequence>
+      <xs:element name="fri" type="xs:string"/>
+      <xs:element name="alias" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gettransactionhistoryentrytype">
+    <xs:sequence>
+      <xs:element name="financialtransactionid" type="xs:string" minOccurs="0"/>
+      <xs:element name="transactionstatus" type="tns:financialtransactionstatus" minOccurs="0"/>
+      <xs:element name="transfertype" type="tns:transfertype" minOccurs="0"/>
+      <xs:element name="startdate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="commitdate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="fxrate" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="initiatinguser" type="xs:string" minOccurs="0"/>
+      <xs:element name="initiatingaccountholder" type="xs:string" minOccurs="0"/>
+      <xs:element name="from" type="xs:string" minOccurs="0"/>
+      <xs:element name="fromaccount" type="xs:string" minOccurs="0"/>
+      <xs:element name="fromamount" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="fromfee" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="fromexternalfee" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="fromloyfee" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="fromloyreward" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="fromnote" type="xs:string" minOccurs="0"/>
+      <xs:element name="fromavailablebalance" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="fromtotalbalance" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="fromcommittedbalance" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="to" type="xs:string" minOccurs="0"/>
+      <xs:element name="toaccount" type="xs:string" minOccurs="0"/>
+      <xs:element name="toamount" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="tofee" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="toexternalfee" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="toloyfee" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="toloyreward" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="tomessage" type="xs:string" minOccurs="0"/>
+      <xs:element name="toavailablebalance" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="tototalbalance" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="tocommittedbalance" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="maininstructionid" type="xs:long" minOccurs="0"/>
+      <xs:element name="instructionid" type="xs:long" minOccurs="0"/>
+      <xs:element name="externaltransactionid" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="gettransactionhistoryentrydetailstype">
+    <xs:sequence>
+      <xs:element name="financialtransactionid" type="xs:long" minOccurs="0"/>
+      <xs:element name="fromfri" type="xs:string" minOccurs="0"/>
+      <xs:element name="tofri" type="xs:string" minOccurs="0"/>
+      <xs:element name="amount" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="transfertype" type="tns:transfertype" minOccurs="0"/>
+      <xs:element name="date" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="instructionid" type="xs:long" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="groupdetailstype">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string" minOccurs="0"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="type" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="groupmembersstype">
+    <xs:all>
+      <xs:element name="id" type="xs:string" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+      <xs:element name="username" type="xs:string" minOccurs="0"/>
+      <xs:element name="defaultfri" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="locationdetailstype">
+    <xs:sequence>
+      <xs:element name="city" type="xs:string" minOccurs="0"/>
+      <xs:element name="state" type="xs:string" minOccurs="0"/>
+      <xs:element name="country" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="minmaxlimit">
+    <xs:sequence>
+      <xs:element name="min" type="xs:int"/>
+      <xs:element name="max" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="multiwordstringvalue">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="nettingreportdata">
+    <xs:sequence>
+      <xs:element name="startdate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="enddate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="firstfinancialtransactionid" type="xs:long" minOccurs="0"/>
+      <xs:element name="firsttransactiondate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="lastfinancialtransactionid" type="xs:long" minOccurs="0"/>
+      <xs:element name="lasttransactiondate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="details" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="detail" type="tns:nettingreportdetailsdata" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="nettingreportdetailsdata">
+    <xs:sequence>
+      <xs:element name="bankname" type="xs:string" minOccurs="0"/>
+      <xs:element name="otherbankname" type="xs:string" minOccurs="0"/>
+      <xs:element name="sentamount" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="receivedamount" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="differenceamount" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="currency" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="paymentinstructiondetails">
+    <xs:sequence>
+      <xs:element name="financialtransaction" type="xs:long" minOccurs="0"/>
+      <xs:element name="identity" type="xs:string" minOccurs="0"/>
+      <xs:element name="externaltransactionid" type="xs:string" minOccurs="0"/>
+      <xs:element name="calleridentifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="custodyaccountclearingnumber" type="xs:string"/>
+      <xs:element name="custodyaccountnumber" type="xs:string"/>
+      <xs:element name="timestamp" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="amount" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="status" type="tns:paymentinstructionstatus"/>
+      <xs:element name="accountholderclearingnumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="accountholderaccountnumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="fromfri" type="xs:string" minOccurs="0"/>
+      <xs:element name="lastupdatetimestamp" type="xs:dateTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="paymentinstructionresponsedetails">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="settlementid" type="xs:long" minOccurs="0"/>
+      <xs:element name="paymentinstructiondetails" type="tns:paymentinstructiondetails" minOccurs="0"/>
+      <xs:element name="transactionid" type="xs:string" minOccurs="0"/>
+      <xs:element name="result" type="tns:paymentinstructionresult" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="failureReason" type="xs:string" minOccurs="0"/>
+      <xs:element name="transactiontimeStamp" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="bookingtimestamp" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="lastupdatedatetime" type="xs:dateTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="permissiontype">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="subpermissions" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="subpermission" type="tns:multiwordstringvalue" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="permissionvalue">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="preapprovaldetails">
+    <xs:sequence>
+      <xs:element name="preapprovalid" type="xs:long"/>
+      <xs:element name="tofri" type="xs:string"/>
+      <xs:element name="fromfri" type="xs:string"/>
+      <xs:element name="lastmodified" type="xs:dateTime"/>
+      <xs:element name="status" type="tns:preapprovalstatus"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="profilename">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="propertytype">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="value" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="receiverinfo">
+    <xs:sequence>
+      <xs:element name="fri" type="xs:string"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+      <xs:element name="emailadresses" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="email" type="tns:emailaddress" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="language" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="financialinstructiondetails">
+    <xs:sequence>
+      <xs:element name="date" type="xs:dateTime"/>
+      <xs:element name="fromfri" type="xs:string"/>
+      <xs:element name="tofri" type="xs:string"/>
+      <xs:element name="financialinstructiontype" type="tns:financialinstructiontype"/>
+      <xs:element name="transfertype" type="tns:transfertype"/>
+      <xs:element name="amount" type="xs:decimal"/>
+      <xs:element name="frommessage" type="xs:string" minOccurs="0"/>
+      <xs:element name="tomessage" type="xs:string" minOccurs="0"/>
+      <xs:element name="externaltransactionid" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="senderinfo">
+    <xs:sequence>
+      <xs:element name="fri" type="xs:string"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="settlementdepositdetails">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="settlementid" type="xs:long"/>
+      <xs:element name="depositstatus" type="tns:depositstatus"/>
+      <xs:element name="transactionid" type="xs:string" minOccurs="0"/>
+      <xs:element name="senderaccountnumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="senderclearingnumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="amount" type="tns:moneydetailstype"/>
+      <xs:element name="transactiontimeStamp" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="receiverfirstname" type="xs:string" minOccurs="0"/>
+      <xs:element name="receiversurname" type="xs:string" minOccurs="0"/>
+      <xs:element name="receivingaccountholderfri" type="xs:string" minOccurs="0"/>
+      <xs:element name="receivingaccountfri" type="xs:string" minOccurs="0"/>
+      <xs:element name="financialtransactionid" type="xs:long" minOccurs="0"/>
+      <xs:element name="failurereason" type="xs:string" minOccurs="0"/>
+      <xs:element name="resolvedreceiverfri" type="xs:string" minOccurs="0"/>
+      <xs:element name="resolvedfinancialtransactionid" type="xs:long" minOccurs="0"/>
+      <xs:element name="correctedby" type="xs:string" minOccurs="0"/>
+      <xs:element name="correctionnote" type="xs:string" minOccurs="0"/>
+      <xs:element name="bookingtimestamp" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="lastupdatedatetime" type="xs:dateTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="settlementdetails">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="status" type="tns:settlementstatus" minOccurs="0"/>
+      <xs:element name="calleridentifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="settlementfilename" type="xs:string" minOccurs="0"/>
+      <xs:element name="openingbalance" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="closingbalance" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="failurereason" type="xs:string" minOccurs="0"/>
+      <xs:element name="bookingdatetime" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="lastupdatedatetime" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="numberofpendingwithdrawals" type="xs:int"/>
+      <xs:element name="numberofsuccessfulwithdrawals" type="xs:int"/>
+      <xs:element name="numberoffailedwithdrawals" type="xs:int"/>
+      <xs:element name="numberofpendingdeposits" type="xs:int"/>
+      <xs:element name="numberofsuccessfuldeposits" type="xs:int"/>
+      <xs:element name="numberoffaileddeposits" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="systemaccountdetails">
+    <xs:sequence>
+      <xs:element name="currency" type="xs:string" minOccurs="0"/>
+      <xs:element name="mainaccountfri" type="xs:string" minOccurs="0"/>
+      <xs:element name="suspenseaccountfri" type="xs:string" minOccurs="0"/>
+      <xs:element name="settlementaccountsfri">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="settlementaccountfri" type="tns:frivalue" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transferapprovaldetails">
+    <xs:sequence>
+      <xs:element name="transactionid" type="xs:long"/>
+      <xs:element name="approvalexpirytime" type="xs:dateTime"/>
+      <xs:element name="status" type="xs:string"/>
+      <xs:element name="amount" type="tns:moneydetailstype"/>
+      <xs:element name="fee" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="initiatingaccountholderid" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transferinitiatedetails">
+    <xs:sequence>
+      <xs:element name="approvalexpirytime" type="xs:dateTime"/>
+      <xs:element name="status" type="xs:string"/>
+      <xs:element name="amount" type="tns:moneydetailstype"/>
+      <xs:element name="approvingaccountholdermsisdn" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="voucherdatatype">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string" minOccurs="0"/>
+      <xs:element name="identificationtype" type="ns1:PersonIdentificationType1Code" minOccurs="0"/>
+      <xs:element name="identification" type="xs:string" minOccurs="0"/>
+      <xs:element name="money" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="sourcefri" type="xs:string" minOccurs="0"/>
+      <xs:element name="status" type="tns:voucherstatus" minOccurs="0"/>
+      <xs:element name="firstname" type="xs:string" minOccurs="0"/>
+      <xs:element name="surname" type="xs:string" minOccurs="0"/>
+      <xs:element name="externalid" type="xs:string" minOccurs="0"/>
+      <xs:element name="dateofbirth" type="xs:string" minOccurs="0"/>
+      <xs:element name="creationdatetime" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="expireDateTime" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="reason" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="whitelistedaccountholderdetailstype">
+    <xs:sequence>
+      <xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+      <xs:element name="firstname" type="xs:string" minOccurs="0"/>
+      <xs:element name="surname" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="name">
+    <xs:sequence>
+      <xs:element name="firstname" type="xs:string"/>
+      <xs:element name="lastname" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transactiondate">
+    <xs:sequence>
+      <xs:element name="date" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="scheduledtransaction">
+    <xs:sequence>
+      <xs:element name="scheduledtransactionid" type="xs:long"/>
+      <xs:element name="fromfri" type="xs:string"/>
+      <xs:element name="tofri" type="xs:string"/>
+      <xs:element name="amount" type="xs:decimal"/>
+      <xs:element name="frommessage" type="xs:string"/>
+      <xs:element name="tomessage" type="xs:string"/>
+      <xs:element name="financialoperation" type="xs:string"/>
+      <xs:element name="scheduledate" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="accounttype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MOBILE_MONEY"/>
+      <xs:enumeration value="COMMISSIONING"/>
+      <xs:enumeration value="LOYALTY_POINTS"/>
+      <xs:enumeration value="UNKNOWN"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="reconciliationstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="STARTED"/>
+      <xs:enumeration value="RUNNING"/>
+      <xs:enumeration value="FAILED"/>
+      <xs:enumeration value="IDLE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="callbackerrortype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INTERNAL_ERROR"/>
+      <xs:enumeration value="CONNECTION_ERROR"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="moneytransfermatchstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="PASSED"/>
+      <xs:enumeration value="FAILED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="moneytransferoperationtype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="PICKUP"/>
+      <xs:enumeration value="AUTO_RECEIVE"/>
+      <xs:enumeration value="REMITTANCE"/>
+      <xs:enumeration value="PAYMENT"/>
+      <xs:enumeration value="WITHDRAW"/>
+      <xs:enumeration value="DEBIT"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="moneytransferstatustype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATED"/>
+      <xs:enumeration value="NEED_VALIDATION_DETAILS"/>
+      <xs:enumeration value="WILL_BE_QUEUED"/>
+      <xs:enumeration value="QUEUED"/>
+      <xs:enumeration value="PENDING"/>
+      <xs:enumeration value="ACCEPTED"/>
+      <xs:enumeration value="COMPLETED"/>
+      <xs:enumeration value="REJECTED"/>
+      <xs:enumeration value="CANCELED"/>
+      <xs:enumeration value="FAILED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="payoutmethodtype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="WALLET"/>
+      <xs:enumeration value="CASH"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="registrationstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Y"/>
+      <xs:enumeration value="N"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="accessmoduleerrortype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INTERNAL_ERROR"/>
+      <xs:enumeration value="ACCOUNT_NOT_FOUND"/>
+      <xs:enumeration value="ACCOUNTHOLDER_NOT_FOUND"/>
+      <xs:enumeration value="INVALID_SESSION"/>
+      <xs:enumeration value="NOT_ENOUGH_FUNDS"/>
+      <xs:enumeration value="RESOURCE_NOT_FOUND"/>
+      <xs:enumeration value="TRANSACTION_NOT_FOUND"/>
+      <xs:enumeration value="INVALID_TRANSACTION_STATUS"/>
+      <xs:enumeration value="INACTIVE_TRANSACTION"/>
+      <xs:enumeration value="CONNECTION_ERROR"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="accountstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="BLOCKED"/>
+      <xs:enumeration value="CLOSED"/>
+      <xs:enumeration value="UNAVAILABLE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="accountholderstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="REGISTERED"/>
+      <xs:enumeration value="REGISTERED_BLOCKED"/>
+      <xs:enumeration value="REGISTERED_CLOSED"/>
+      <xs:enumeration value="BLOCKED"/>
+      <xs:enumeration value="CLOSED"/>
+      <xs:enumeration value="CREATED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="blackliststatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BLACKLISTED"/>
+      <xs:enumeration value="WHITELISTED"/>
+      <xs:enumeration value="NONE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="credentialstatustype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="INACTIVE"/>
+      <xs:enumeration value="BLOCKED"/>
+      <xs:enumeration value="ACTIVE_MUST_BE_CHANGED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="adjustmenttype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ADJUSTMENT"/>
+      <xs:enumeration value="ADJUSTMENT_FEE"/>
+      <xs:enumeration value="ADJUSTMENT_LOY"/>
+      <xs:enumeration value="ADJUSTMENT_COMMISSIONING"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="approvalstate">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="PENDING"/>
+      <xs:enumeration value="REVIEW"/>
+      <xs:enumeration value="APPROVED"/>
+      <xs:enumeration value="REJECTED"/>
+      <xs:enumeration value="CANCELLED"/>
+      <xs:enumeration value="FAILED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="approvaloperation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="UNBLOCK_ACCOUNTHOLDER"/>
+      <xs:enumeration value="ACCOUNTHOLDER_REGISTRATION"/>
+      <xs:enumeration value="UPDATE_ACCOUNTHOLDER"/>
+      <xs:enumeration value="REVERSE_TRANSACTION"/>
+      <xs:enumeration value="ADJUSTMENT"/>
+      <xs:enumeration value="UPDATE_ACCOUNTHOLDER_MSISDN"/>
+      <xs:enumeration value="UPDATE_ACCOUNTHOLDER_EMAIL"/>
+      <xs:enumeration value="UPDATE_ACCOUNTHOLDER_PROFILE"/>
+      <xs:enumeration value="UPDATE_ACCOUNTHOLDER_EXTERNALID"/>
+      <xs:enumeration value="UPDATE_ACCOUNTHOLDER_USERNAME"/>
+      <xs:enumeration value="UPDATE_ACCOUNTHOLDER_BANK_ACCOUNT"/>
+      <xs:enumeration value="ADD_ACCOUNTHOLDER_ALIAS"/>
+      <xs:enumeration value="REMOVE_ACCOUNTHOLDER_ALIAS"/>
+      <xs:enumeration value="UPDATE_ACCOUNT_PROFILE"/>
+      <xs:enumeration value="SET_AUTHENTICATION_QUESTION_ANSWER"/>
+      <xs:enumeration value="INITIATE_PIN_RESET"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="batchtransferresulttype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUMMARY_REPORT"/>
+      <xs:enumeration value="FULL_REPORT"/>
+      <xs:enumeration value="FULL_REPORT_ON_COMPLETED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="batchtransferstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATED"/>
+      <xs:enumeration value="APPROVED"/>
+      <xs:enumeration value="ONGOING"/>
+      <xs:enumeration value="COMPLETED"/>
+      <xs:enumeration value="CANCELLED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="custodytransferstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATED"/>
+      <xs:enumeration value="PAYMENT_DONE_WAIT_FOR_DEPOSIT"/>
+      <xs:enumeration value="DEPOSIT_DONE_WAIT_FOR_PAYMENT"/>
+      <xs:enumeration value="DONE_WAIT_FOR_PROCESS"/>
+      <xs:enumeration value="SUCCESS"/>
+      <xs:enumeration value="FAILURE"/>
+      <xs:enumeration value="INACTIVE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="direction">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="IN"/>
+      <xs:enumeration value="OUT"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="financialinstructiontype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DEPOSIT"/>
+      <xs:enumeration value="WITHDRAWAL"/>
+      <xs:enumeration value="TRANSFER"/>
+      <xs:enumeration value="CASH_IN"/>
+      <xs:enumeration value="CASH_OUT"/>
+      <xs:enumeration value="TRANSFER_TO_VOUCHER"/>
+      <xs:enumeration value="TRANSFER_FROM_VOUCHER"/>
+      <xs:enumeration value="PAYMENT_SEND"/>
+      <xs:enumeration value="PAYMENT_RECEIVE"/>
+      <xs:enumeration value="COMMISSIONING"/>
+      <xs:enumeration value="FEE"/>
+      <xs:enumeration value="PERIODIC_FEE"/>
+      <xs:enumeration value="CANCEL_VOUCHER"/>
+      <xs:enumeration value="VIEW_ACTIVE_TOKEN"/>
+      <xs:enumeration value="VIEW_TOKEN"/>
+      <xs:enumeration value="EXPIRE_VOUCHER"/>
+      <xs:enumeration value="BALANCE_ENQUIRY"/>
+      <xs:enumeration value="TRANSACTION_HISTORY_ENQUIRY"/>
+      <xs:enumeration value="REMITTANCE"/>
+      <xs:enumeration value="INVITATION_TRANSFER_FROM"/>
+      <xs:enumeration value="INVITATION_TRANSFER_TO"/>
+      <xs:enumeration value="REWARD"/>
+      <xs:enumeration value="CASH_OUT_ATM"/>
+      <xs:enumeration value="TRANSFER_FROM_VOUCHER_ATM"/>
+      <xs:enumeration value="PICKUP"/>
+      <xs:enumeration value="REVERSAL"/>
+      <xs:enumeration value="REVERSAL_FEE"/>
+      <xs:enumeration value="REVERSAL_LOY"/>
+      <xs:enumeration value="REVERSAL_COMMISSIONING"/>
+      <xs:enumeration value="ADJUSTMENT"/>
+      <xs:enumeration value="ADJUSTMENT_FEE"/>
+      <xs:enumeration value="ADJUSTMENT_LOY"/>
+      <xs:enumeration value="ADJUSTMENT_COMMISSIONING"/>
+      <xs:enumeration value="BATCH_TRANSFER"/>
+      <xs:enumeration value="RESOURCE_INFORMATION_ENQUIRY"/>
+      <xs:enumeration value="DEBIT"/>
+      <xs:enumeration value="RESOLVE_DEPOSIT"/>
+      <xs:enumeration value="SUSPEND_DEPOSIT"/>
+      <xs:enumeration value="PAYMENT"/>
+      <xs:enumeration value="CUSTODY_ACCOUNTS_TRANSFER"/>
+      <xs:enumeration value="EXTERNAL_TRANSFER"/>
+      <xs:enumeration value="REFUND"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="financialtransactionstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESSFUL"/>
+      <xs:enumeration value="PENDING"/>
+      <xs:enumeration value="FAILED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="transfertype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TRANSFER_FEE"/>
+      <xs:enumeration value="TRANSFER"/>
+      <xs:enumeration value="CASH_IN_FEE"/>
+      <xs:enumeration value="CASH_IN"/>
+      <xs:enumeration value="CASH_OUT_FEE"/>
+      <xs:enumeration value="CASH_OUT"/>
+      <xs:enumeration value="DEPOSIT_FEE"/>
+      <xs:enumeration value="DEPOSIT"/>
+      <xs:enumeration value="WITHDRAWAL_FEE"/>
+      <xs:enumeration value="WITHDRAWAL"/>
+      <xs:enumeration value="TRANSFER_TO_VOUCHER_FEE"/>
+      <xs:enumeration value="TRANSFER_TO_VOUCHER"/>
+      <xs:enumeration value="TRANSFER_FROM_VOUCHER_FEE"/>
+      <xs:enumeration value="TRANSFER_FROM_VOUCHER"/>
+      <xs:enumeration value="PAYMENT_FEE"/>
+      <xs:enumeration value="PAYMENT"/>
+      <xs:enumeration value="CANCEL_VOUCHER_FEE"/>
+      <xs:enumeration value="CANCEL_VOUCHER"/>
+      <xs:enumeration value="EXPIRE_VOUCHER_FEE"/>
+      <xs:enumeration value="EXPIRE_VOUCHER"/>
+      <xs:enumeration value="INVITATION_TRANSFER_FROM_FEE"/>
+      <xs:enumeration value="INVITATION_TRANSFER_FROM"/>
+      <xs:enumeration value="INVITATION_TRANSFER_TO_FEE"/>
+      <xs:enumeration value="INVITATION_TRANSFER_TO"/>
+      <xs:enumeration value="CASH_OUT_ATM_FEE"/>
+      <xs:enumeration value="CASH_OUT_ATM"/>
+      <xs:enumeration value="TRANSFER_FROM_VOUCHER_ATM_FEE"/>
+      <xs:enumeration value="TRANSFER_FROM_VOUCHER_ATM"/>
+      <xs:enumeration value="PICKUP_FEE"/>
+      <xs:enumeration value="PICKUP"/>
+      <xs:enumeration value="COMMISSIONING"/>
+      <xs:enumeration value="VIEW_TOKEN"/>
+      <xs:enumeration value="VIEW_ACTIVE_TOKEN"/>
+      <xs:enumeration value="BALANCE_ENQUIRY"/>
+      <xs:enumeration value="LAST_TRANSACTIONS"/>
+      <xs:enumeration value="PERIODIC_FEE"/>
+      <xs:enumeration value="REVERSAL"/>
+      <xs:enumeration value="REVERSAL_FEE"/>
+      <xs:enumeration value="REVERSAL_LOY"/>
+      <xs:enumeration value="REVERSAL_COMMISSIONING"/>
+      <xs:enumeration value="ADJUSTMENT"/>
+      <xs:enumeration value="ADJUSTMENT_FEE"/>
+      <xs:enumeration value="ADJUSTMENT_LOY"/>
+      <xs:enumeration value="ADJUSTMENT_COMMISSIONING"/>
+      <xs:enumeration value="BATCH_TRANSFER_FEE"/>
+      <xs:enumeration value="BATCH_TRANSFER"/>
+      <xs:enumeration value="RESOURCE_INFORMATION_ENQUIRY"/>
+      <xs:enumeration value="DEBIT_FEE"/>
+      <xs:enumeration value="DEBIT"/>
+      <xs:enumeration value="EXTERNAL_PAYMENT_FEE"/>
+      <xs:enumeration value="EXTERNAL_PAYMENT"/>
+      <xs:enumeration value="CUSTODY_ACCOUNTS_TRANSFER"/>
+      <xs:enumeration value="EXTERNAL_TRANSFER_FEE"/>
+      <xs:enumeration value="EXTERNAL_TRANSFER"/>
+      <xs:enumeration value="REFUND"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="operationtype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TRANSFER"/>
+      <xs:enumeration value="CASH_IN"/>
+      <xs:enumeration value="CASH_OUT"/>
+      <xs:enumeration value="TRANSFER_TO_VOUCHER"/>
+      <xs:enumeration value="TRANSFER_FROM_VOUCHER"/>
+      <xs:enumeration value="USER_PAYMENT"/>
+      <xs:enumeration value="BALANCE_ENQUIRY"/>
+      <xs:enumeration value="DEPOSIT"/>
+      <xs:enumeration value="WITHDRAWAL"/>
+      <xs:enumeration value="LAST_TRANSACTIONS"/>
+      <xs:enumeration value="COMMISSIONING"/>
+      <xs:enumeration value="VIEW_TOKEN"/>
+      <xs:enumeration value="VIEW_ACTIVE_TOKEN"/>
+      <xs:enumeration value="CANCEL_VOUCHER"/>
+      <xs:enumeration value="FEE"/>
+      <xs:enumeration value="PERIODIC_FEE"/>
+      <xs:enumeration value="PAYMENT_SEND"/>
+      <xs:enumeration value="PAYMENT_RECEIVE"/>
+      <xs:enumeration value="REMITTANCE"/>
+      <xs:enumeration value="CARD_LOAD"/>
+      <xs:enumeration value="EXPIRE_VOUCHER"/>
+      <xs:enumeration value="INVITATION_TRANSFER_FROM"/>
+      <xs:enumeration value="INVITATION_TRANSFER_TO"/>
+      <xs:enumeration value="CASH_OUT_ATM"/>
+      <xs:enumeration value="TRANSFER_FROM_VOUCHER_ATM"/>
+      <xs:enumeration value="PICKUP"/>
+      <xs:enumeration value="REVERSAL"/>
+      <xs:enumeration value="REVERSAL_FEE"/>
+      <xs:enumeration value="REVERSAL_LOY"/>
+      <xs:enumeration value="REVERSAL_COMMISSIONING"/>
+      <xs:enumeration value="ADJUSTMENT"/>
+      <xs:enumeration value="ADJUSTMENT_FEE"/>
+      <xs:enumeration value="ADJUSTMENT_LOY"/>
+      <xs:enumeration value="ADJUSTMENT_COMMISSIONING"/>
+      <xs:enumeration value="BATCH_TRANSFER"/>
+      <xs:enumeration value="RESOURCE_INFORMATION_ENQUIRY"/>
+      <xs:enumeration value="DEBIT"/>
+      <xs:enumeration value="PAYMENT"/>
+      <xs:enumeration value="CUSTODY_ACCOUNTS_TRANSFER"/>
+      <xs:enumeration value="EXTERNAL_TRANSFER"/>
+      <xs:enumeration value="REFUND"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="paymentinstructionstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PENDING"/>
+      <xs:enumeration value="SENT_TO_BANK"/>
+      <xs:enumeration value="PROCESSED"/>
+      <xs:enumeration value="INACTIVE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="paymentinstructionresult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS"/>
+      <xs:enumeration value="FAILED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="preapprovalstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PENDING"/>
+      <xs:enumeration value="APPROVED"/>
+      <xs:enumeration value="REJECTED"/>
+      <xs:enumeration value="EXPIRED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="profiletype">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACCOUNT_HOLDER_PROFILE"/>
+      <xs:enumeration value="ACCOUNT_HOLDER_ACCOUNT_REFERENCE_PROFILE"/>
+      <xs:enumeration value="ACCOUNT_PROFILE"/>
+      <xs:enumeration value="GROUP_PROFILE"/>
+      <xs:enumeration value="GROUP_MEMBER_PROFILE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="depositstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATED"/>
+      <xs:enumeration value="SUCCESS"/>
+      <xs:enumeration value="UNRESOLVED"/>
+      <xs:enumeration value="RESOLVED"/>
+      <xs:enumeration value="PENDING"/>
+      <xs:enumeration value="FAILED"/>
+      <xs:enumeration value="INACTIVE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="settlementstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PENDING"/>
+      <xs:enumeration value="INACTIVE"/>
+      <xs:enumeration value="FAILED"/>
+      <xs:enumeration value="SUCCESS"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="voucherstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATED"/>
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="REDEEMED"/>
+      <xs:enumeration value="EXPIRED"/>
+      <xs:enumeration value="SUSPENDED"/>
+      <xs:enumeration value="CANCELLED"/>
+      <xs:enumeration value="FINALIZED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="paymentstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PENDING"/>
+      <xs:enumeration value="COMPLETED"/>
+      <xs:enumeration value="FAILED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CREATED"/>
+      <xs:enumeration value="PENDING"/>
+      <xs:enumeration value="COMPLETED"/>
+      <xs:enumeration value="FAILED"/>
+      <xs:enumeration value="EXPIRED"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="argumenttype">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="textvalue" type="xs:string"/>
+      <xs:element minOccurs="0" name="moneyvalue" type="tns:moneydetailstype"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="rejectedtransactionentry">
+    <xs:sequence>
+      <xs:element name="financialtransactionid" type="xs:string" minOccurs="0"/>
+      <xs:element name="transfertype" type="tns:transfertype" minOccurs="0"/>
+      <xs:element name="startdate" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="initiatinguser" type="xs:string" minOccurs="0"/>
+      <xs:element name="initiatingaccountholder" type="xs:string" minOccurs="0"/>
+      <xs:element name="from" type="xs:string" minOccurs="0"/>
+      <xs:element name="fromaccount" type="xs:string" minOccurs="0"/>
+      <xs:element name="fromamount" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="fromfee" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="to" type="xs:string" minOccurs="0"/>
+      <xs:element name="toaccount" type="xs:string" minOccurs="0"/>
+      <xs:element name="toamount" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="tofee" type="tns:moneydetailstype" minOccurs="0"/>
+      <xs:element name="cause" type="xs:string" minOccurs="0"/>
+      <xs:element name="reason" type="xs:string" minOccurs="0"/>
+      <xs:element name="arguments" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="argument" type="tns:argumenttype" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>      
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

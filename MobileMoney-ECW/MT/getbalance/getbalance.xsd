@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://www.ericsson.com/em/emm/financial/v1_0" xmlns:ns1="http://www.ericsson.com/em/emm/v1_0/common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://www.ericsson.com/em/emm/v1_0/common" schemaLocation="common.xsd" />
+
+  <xs:element name="getbalancerequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="fri" type="xs:string" minOccurs="0"/>
+        <xs:element name="quoteid" type="ns1:quoteid" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getbalanceresponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="balance" type="ns1:moneydetailstype" minOccurs="0"/>
+        <xs:element name="loyalty" type="ns1:loyalty" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

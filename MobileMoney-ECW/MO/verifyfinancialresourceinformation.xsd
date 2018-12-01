@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://www.ericsson.com/em/emm/sp/backend" xmlns:ns1="http://www.ericsson.com/em/emm/common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://www.ericsson.com/em/emm/common" schemaLocation="common.xsd"/>
+
+  <xs:element name="verifyfinancialresourceinformationrequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="resource" type="xs:string"/>
+        <xs:element name="accountholderid" type="xs:string"/>
+        <xs:element name="extension" type="ns1:extensiontype" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="verifyfinancialresourceinformationresponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="valid" type="xs:boolean"/>
+        <xs:element name="extension" type="ns1:extensiontype" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+
